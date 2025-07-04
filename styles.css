@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  padding: 10px 20px;
+  border-bottom: 4px solid #ffc0cb;
+}
+
+.nav-logo {
+  color: #ffc0cb;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.top-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+  background-color: #ffc0cb;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.welcome-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
+.intro {
+  max-width: 700px;
+  font-size: 1.2rem;
+  margin: 20px auto;
+  line-height: 1.6;
+  color: #444;
+}
+
+.cta-button {
+  background-color: #ff9dbb;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #e75480;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  background-color: #e75480;
+  transform: scale(1.05);
+}
+
+.highlight {
+  background-color: #ffe5ec;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.live-background {
+  animation: gradient 18s ease infinite;
+  background-size: 400% 400%;
+}

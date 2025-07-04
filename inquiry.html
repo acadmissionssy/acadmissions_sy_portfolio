@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send an Inquiry</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      padding: 40px;
+      background-color: #fff0f5;
+      color: #333;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    nav {
+      background-color: #e75480;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #c7436a;
+    }
+
+    h1 {
+      color: #e75480;
+      text-align: center;
+    }
+
+    .success-message {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border: 1px solid #c3e6cb;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, textarea, button {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #e75480;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c7436a;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="about.html">📖 About Me</a></li>
+      <li><a href="faq.html">❓ FAQ</a></li>
+      <li><a href="services.html">🛠 Services</a></li>
+      <li><a href="inquiry.html" class="active">📩 Inquiry</a></li>
+      <li><a href="stats.html">📊 Statistics</a></li>
+      <li><a href="proof.html">💰 Proof</a></li>
+      <li><a href="thanks.html">🙏 Thanks</a></li>
+      <li><a href="terms.html">📋 Terms & Conditions</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✅ Success Message -->
+  <div class="success-message" id="successMsg">
+  ✅ You submitted successfully! I will update you shortly. <br>
+  📩 Feel free to message me on <a href="https://www.facebook.com/acadmissionserver" target="_blank">Facebook</a>. <br><br>
+  🔔 <strong>Update me also if you already filled up the form of your inquiry</strong><br>
+  so that I can be fully updated — especially if I’m doing something or I’m busy.
+</div>
+
+  <h1>Send an Inquiry</h1>
+
+  <form id="inquiryForm" action="https://formsubmit.co/ajax/cheelsygrgs@gmail.com" method="POST">
+    <h2>Inquiry Form</h2>
+
+    <input type="text" name="Name" placeholder="Name" required>
+    <input type="text" name="Type_of_Task" placeholder="Type of Task" required>
+    <input type="text" name="Deadline" placeholder="Deadline" required>
+    <textarea name="Instructions" placeholder="Instructions" required></textarea>
+    <input type="text" name="Budget" placeholder="Budget">
+    <input type="email" name="Email" placeholder="Your Email (we may contact you)" required>
+
+    <!-- Hidden Fields -->
+    <input type="hidden" name="_subject" value="New Inquiry from Cheelsy Portfolio Site">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+
+    <button type="submit">Send Inquiry</button>
+    <p><em>Note: Please provide clear and proper instructions.</em></p>
+  </form>
+
+  <script>
+    const form = document.getElementById('inquiryForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      let isValid = true;
+
+      // Validate all required fields
+      form.querySelectorAll('[required]').forEach(field => {
+        if (!field.value.trim()) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        alert("❗ Please fill up the entire form before submitting.");
+        return;
+      }
+
+      // Submit form to FormSubmit
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        successMsg.style.display = 'block'; // Show success message
+        form.reset();                       // Clear form fields
+        window.scrollTo(0, 0);              // Scroll to top
+      });
+    });
+  </script>
+
+</body>
+</html>
